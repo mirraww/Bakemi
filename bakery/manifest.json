@@ -1,0 +1,18 @@
+{
+  "id": "./",
+  "name": "Nama Bakery — Menu & Pesan",
+  "short_name": "Bakery",
+  "description": "Menu bakery online. Pesan lewat WhatsApp, ambil di toko.",
+  "lang": "id",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFF8F0",
+  "theme_color": "#EADFF8",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

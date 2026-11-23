@@ -1,0 +1,62 @@
+{
+  "toko": {
+    "nama": "Manis Manja Bakery",
+    "merek": "Manis Manja",
+    "jenis": "BAKERY",
+    "wa": "6285703285896",
+    "alamat": "Jl. Kemang Raya No. 18, Jakarta Selatan",
+    "maps": "https://maps.google.com/?q=Jl.+Kemang+Raya+No.+18+Jakarta+Selatan",
+    "jamBuka": { "buka": "08:00", "tutup": "20:00" },
+    "jamLabel": "Setiap hari, 08:00–20:00 WIB",
+    "siapMenit": 60,
+    "pembayaran": {
+      "qris": { "gambar": "images/qris.png", "atasNama": "MANIS MANJA BAKERY" },
+      "bank": [
+        { "bank": "BCA", "noRek": "1234567890", "atasNama": "Manis Manja Bakery" }
+      ]
+    }
+  },
+  "kategori": ["Roti", "Kue", "Cake", "Minuman"],
+  "produk": [
+    {
+      "id": "p001", "nama": "Croissant Butter", "kategori": "Roti", "harga": 25000,
+      "deskripsi": "Renyah berlapis, wangi butter Prancis",
+      "foto": "", "emoji": "🥐", "warna": "#F8E4BE", "tersedia": true, "preOrder": false, "label": "Best Seller"
+    },
+    {
+      "id": "p002", "nama": "Brownies Fudge", "kategori": "Kue", "harga": 65000,
+      "deskripsi": "Cokelat pekat, fudgy dan lumer",
+      "foto": "", "emoji": "🍫", "warna": "#E9D2C0", "tersedia": true, "preOrder": false, "label": "Best Seller"
+    },
+    {
+      "id": "p003", "nama": "Bolu Pandan", "kategori": "Kue", "harga": 48000,
+      "deskripsi": "Lembut dengan santan dan pandan asli",
+      "foto": "", "emoji": "🍰", "warna": "#DCEBCB", "tersedia": false, "preOrder": false
+    },
+    {
+      "id": "p004", "nama": "Cake Cokelat", "kategori": "Cake", "harga": 185000,
+      "deskripsi": "Cake 18 cm, ganache cokelat premium",
+      "foto": "", "emoji": "🎂", "warna": "#E7D6D1", "tersedia": true, "preOrder": true, "poHari": 2
+    },
+    {
+      "id": "p005", "nama": "Cinnamon Roll", "kategori": "Roti", "harga": 32000,
+      "deskripsi": "Gulungan kayu manis dan cream cheese",
+      "foto": "", "emoji": "🍥", "warna": "#F6DDCA", "tersedia": true, "preOrder": false, "label": "Baru"
+    },
+    {
+      "id": "p006", "nama": "Strawberry Shortcake", "kategori": "Cake", "harga": 220000,
+      "deskripsi": "Krim ringan dengan stroberi segar",
+      "foto": "", "emoji": "🍓", "warna": "#FFDDE7", "tersedia": true, "preOrder": true, "poHari": 2
+    },
+    {
+      "id": "p007", "nama": "Milk Bun", "kategori": "Roti", "harga": 18000,
+      "deskripsi": "Roti susu super lembut isi vanilla",
+      "foto": "", "emoji": "🍞", "warna": "#F8E9CC", "tersedia": true, "preOrder": false
+    },
+    {
+      "id": "p008", "nama": "Iced Berry Tea", "kategori": "Minuman", "harga": 22000,
+      "deskripsi": "Teh beri segar, manisnya pas",
+      "foto": "", "emoji": "🫐", "warna": "#E7DDF8", "tersedia": true, "preOrder": false, "label": "Baru"
+    }
+  ]
+}
