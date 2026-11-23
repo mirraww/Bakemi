@@ -4,7 +4,7 @@
 // (mis. 'bakery-v2') supaya pelanggan mendapat versi terbaru.
 // Perubahan data/menu.json TIDAK perlu menaikkan versi (selalu diambil dari jaringan dulu).
 
-const VERSION = 'bakery-v2';
+const VERSION = 'bakery-v3';
 const IMG_CACHE = 'bakery-images';
 
 const SHELL = [

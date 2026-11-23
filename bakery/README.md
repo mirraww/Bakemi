@@ -57,9 +57,20 @@ Setiap produk di `produk`:
 - `preOrder: true` + `poHari: 2` → tanggal ambil paling cepat H+2. Jika keranjang berisi beberapa item pre-order, dipakai H terbesar.
 - `kategori` harus sama persis dengan salah satu isi `kategori` di atas.
 
-## Deploy (wajib HTTPS agar PWA bisa di-install)
+## Deploy ke GitHub Pages
 
-Netlify, Vercel, Cloudflare Pages, atau GitHub Pages — cukup unggah isi folder ini.
+Website akan tersedia di **https://mirraww.github.io/Bakemi/**. Workflow GitHub Actions
+mempublikasikan isi folder `bakery` setiap kali ada push ke branch `main`.
+
+Aktifkan sekali di GitHub: buka **Settings → Pages**, lalu pada **Build and deployment → Source**
+pilih **GitHub Actions**. Setelah itu cek tab **Actions** sampai workflow deployment selesai.
+Website harus dibuka lewat HTTPS agar bisa dipasang sebagai aplikasi.
+
+### Pasang di HP
+
+- **Android:** buka link website di Chrome, tekan **Install** di halaman (atau menu ⋮ → **Install app** / **Tambahkan ke layar utama**), lalu konfirmasi.
+- **iPhone/iPad:** buka link di Safari, tekan **Bagikan** → **Tambah ke Layar Utama** → **Tambah**.
+- Setelah terpasang, buka ikon **Manis Manja Bakery** dari layar utama. Aplikasi juga bisa menampilkan menu tersimpan saat offline.
 
 **Setelah mengubah `index.html`, `css/`, atau `js/`, naikkan `VERSION` di `sw.js`** (mis. `bakery-v2`),
 kalau tidak pelanggan akan tetap melihat versi lama. Mengubah `menu.json` tidak perlu.
