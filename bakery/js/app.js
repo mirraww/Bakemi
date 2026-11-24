@@ -137,7 +137,10 @@ function minPickup() {
 
 /* ===================== Muat menu ===================== */
 async function loadMenu() {
-  const res = await fetch('data/menu.json', { cache: 'no-cache' });
+  let res = await fetch('api/menu', { cache: 'no-cache' }).catch(() => null);
+  if (!res || !res.ok) {
+    res = await fetch('data/menu.json', { cache: 'no-cache' });
+  }
   if (!res.ok) throw new Error('HTTP ' + res.status);
   const data = await res.json();
   toko = data.toko;
@@ -642,6 +645,11 @@ function onSubmitCheckout(e) {
 
   persist(CUSTOMER_KEY, { nama, hp });
   persist(ORDERS_KEY, [order, ...store(ORDERS_KEY, [])].slice(0, MAX_ORDERS));
+  fetch('api/orders', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(order)
+  }).catch(() => { /* fallback lokal tetap tersimpan */ });
 
   // Dipanggil langsung dari event submit (gesture pengguna) agar tidak diblokir browser.
   bukaWA(toko.wa, susunPesanOrder({ toko, order }));
@@ -657,7 +665,15 @@ const pickupOf = o => o.pickup || (o.tanggal ? `${o.tanggal}T${o.jam || '00:00'}
 function updateOrder(id, patch) {
   const list = store(ORDERS_KEY, []);
   const i = list.findIndex(o => o.id === id);
-  if (i >= 0) { list[i] = { ...list[i], ...patch }; persist(ORDERS_KEY, list); }
+  if (i >= 0) {
+    list[i] = { ...list[i], ...patch };
+    persist(ORDERS_KEY, list);
+    fetch('api/orders', {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id, ...patch })
+    }).catch(() => { /* abaikan jika offline */ });
+  }
 }
 
 function showSuccess(order, baru = false) {

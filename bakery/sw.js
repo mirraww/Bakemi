@@ -4,7 +4,7 @@
 // (mis. 'bakery-v2') supaya pelanggan mendapat versi terbaru.
 // Perubahan data/menu.json TIDAK perlu menaikkan versi (selalu diambil dari jaringan dulu).
 
-const VERSION = 'bakery-v12';
+const VERSION = 'bakery-v13';
 const IMG_CACHE = 'bakery-images-v2';
 
 const SHELL = [
@@ -44,7 +44,7 @@ self.addEventListener('fetch', event => {
   const url = new URL(req.url);
   if (url.origin !== location.origin) return;
 
-  if (url.pathname.endsWith('/data/menu.json')) {
+  if (url.pathname.endsWith('/data/menu.json') || url.pathname.includes('/api/')) {
     event.respondWith(networkFirst(req));
   } else if (url.pathname.includes('/images/')) {
     event.respondWith(staleWhileRevalidate(req));
