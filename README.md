@@ -1,5 +1,5 @@
 [README.md](https://github.com/user-attachments/files/35258881/README.md)
-# Manis Manja Bakery — Website Menu (PWA + WhatsApp)
+# BakeMiii — Website Menu (PWA + WhatsApp)
 
 Website katalog menu untuk toko roti & kue. Pelanggan memilih menu, mengisi jadwal ambil, lalu tombol
 **Pesan via WhatsApp** membuka WhatsApp dengan **template pesanan yang sudah terisi otomatis**.
