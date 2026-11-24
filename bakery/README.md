@@ -19,7 +19,7 @@ python3 -m http.server 8080
 | Field | Isi |
 |---|---|
 | `toko.nama` | Nama lengkap bakery (dipakai di template WhatsApp) |
-| `toko.merek`, `toko.jenis` | Nama di header ("Manis Manja") dan subjudul kecil ("BAKERY") |
+| `toko.merek`, `toko.jenis` | Nama di header ("BakeMiii") dan subjudul kecil ("BAKERY") |
 | `toko.jamLabel` | Teks jam buka di kartu "Toko Kami" |
 | `toko.wa` | Nomor WA tujuan, format `62812xxxxxxx` (tanpa + / 0 di depan) |
 | `toko.alamat`, `toko.maps`, `toko.instagram` | Info toko |
@@ -57,6 +57,11 @@ Setiap produk di `produk`:
 - `preOrder: true` + `poHari: 2` → tanggal ambil paling cepat H+2. Jika keranjang berisi beberapa item pre-order, dipakai H terbesar.
 - `kategori` harus sama persis dengan salah satu isi `kategori` di atas.
 
+## Promo mingguan
+
+Atur `promoMingguan.diskonProduk` di `data/menu.json` dengan ID produk dan `hargaPromo`.
+Harga promo otomatis digunakan di kartu menu, keranjang, checkout, dan pesan WhatsApp.
+
 ## Deploy ke GitHub Pages
 
 Website akan tersedia di **https://mirraww.github.io/Bakemi/**. Workflow GitHub Actions
@@ -70,7 +75,7 @@ Website harus dibuka lewat HTTPS agar bisa dipasang sebagai aplikasi.
 
 - **Android:** buka link website di Chrome, tekan **Install** di halaman (atau menu ⋮ → **Install app** / **Tambahkan ke layar utama**), lalu konfirmasi.
 - **iPhone/iPad:** buka link di Safari, tekan **Bagikan** → **Tambah ke Layar Utama** → **Tambah**.
-- Setelah terpasang, buka ikon **Manis Manja Bakery** dari layar utama. Aplikasi juga bisa menampilkan menu tersimpan saat offline.
+- Setelah terpasang, buka ikon **BakeMiii** dari layar utama. Aplikasi juga bisa menampilkan menu tersimpan saat offline.
 
 **Setelah mengubah `index.html`, `css/`, atau `js/`, naikkan `VERSION` di `sw.js`** (mis. `bakery-v2`),
 kalau tidak pelanggan akan tetap melihat versi lama. Mengubah `menu.json` tidak perlu.

@@ -1,5 +1,5 @@
 /* ============================================================
-   Manis Manja Bakery — gaya diterapkan dari desain Figma Make
+   BakeMiii — gaya diterapkan dari desain Figma Make
    (ungu · pink · krem pastel, Fraunces + Nunito)
    ============================================================ */
 :root {
@@ -42,7 +42,7 @@ img { max-width: 100%; display: block; }
   stroke-linecap: round; stroke-linejoin: round;
 }
 
-.app-shell { min-height: 100vh; padding-bottom: 110px; overflow-x: hidden; }
+.app-shell { min-height: 100vh; padding-bottom: 90px; overflow-x: hidden; }
 
 /* ---------- Offline ---------- */
 .offline {
@@ -86,13 +86,14 @@ nav { display: flex; align-items: center; gap: 4px; }
 }
 .nav-action:hover { background: var(--lilac); }
 .nav-action > span:not(.desktop-only) { display: none; }
-.install-btn { color: var(--purple); border: 1px solid #d9c8ea; padding: 8px 10px; min-width: 40px; min-height: 40px; }
-.install-btn span { display: none; }
 .cart-icon em {
   position: absolute; top: 4px; right: 3px; background: var(--rose); color: #fff;
   font-size: 10px; font-style: normal; width: 18px; height: 18px; border-radius: 50%;
   display: grid; place-items: center; border: 2px solid var(--cream);
 }
+.cart-icon em[hidden] { display: none; }
+.install-btn { color: var(--purple); border: 1px solid #d9c8ea; padding: 8px 10px; min-width: 40px; min-height: 40px; }
+.install-btn span { display: none; }
 .desktop-only { display: none; }
 main { max-width: 1180px; margin: auto; }
 
@@ -123,12 +124,19 @@ main { max-width: 1180px; margin: auto; }
   font-size: clamp(37px, 10vw, 66px); line-height: 1.04; letter-spacing: -1.8px; margin: 18px 0 14px;
 }
 .hero h1 em { color: var(--rose); font-style: italic; }
-.hero-copy > p { font-size: 14px; line-height: 1.65; max-width: 460px; color: #6e5c79; margin: 0 0 22px; }
+.hero-copy > p:not(.welcome-greeting) { font-size: 14px; line-height: 1.65; max-width: 460px; color: #6e5c79; margin: 0 0 22px; }
+.welcome-greeting { color: var(--rose); font-size: 14px; font-weight: 800; margin: 0 0 9px; }
 .primary-link {
   width: fit-content; min-height: 44px; display: flex; align-items: center; gap: 13px; color: #fff;
   background: var(--purple); padding: 12px 17px 12px 20px; border-radius: 14px;
   text-decoration: none; font-size: 13px; font-weight: 800; box-shadow: 0 8px 20px rgba(123, 94, 167, .2);
 }
+.hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; }
+.pickup-note { display: flex; align-items: center; gap: 7px; color: var(--ink); }
+.pickup-note > .icon { color: var(--rose); }
+.pickup-note span { display: flex; flex-direction: column; line-height: 1.25; }
+.pickup-note small { color: #75677d; font-size: 10px; font-weight: 700; }
+.pickup-note b { color: var(--ink); font-size: 12px; }
 .hero-art { position: absolute; width: 190px; height: 185px; right: -6px; bottom: -9px; }
 .cake-plate {
   position: absolute; right: 16px; bottom: 20px; width: 150px; height: 34px;
@@ -140,21 +148,14 @@ main { max-width: 1180px; margin: auto; }
 }
 .spark { position: absolute; color: var(--rose); font-size: 20px; }
 .s1 { top: 15px; right: 20px; }
-.s2 { top: 48px; left: 5px; font-size: 13px; }
-.pickup-pill {
-  position: absolute; left: -50px; bottom: 42px; display: flex; align-items: center; gap: 7px;
-  background: #fff; padding: 9px 12px; border-radius: 13px;
-  box-shadow: 0 9px 25px rgba(59, 42, 77, .14); color: var(--rose);
-}
-.pickup-pill span { display: flex; flex-direction: column; }
-.pickup-pill small { font-size: 10px; color: #8e7a94; }
-.pickup-pill b { font-size: 11px; color: var(--ink); }
 
 /* ---------- Menu ---------- */
-.menu-section { padding: 60px 16px; }
+.menu-section { padding: 60px 16px; scroll-margin-top: 82px; }
+.page-section { min-height: calc(100vh - 150px); padding: 50px 16px 70px; }
 .eyebrow { color: var(--rose); font-size: 10px; font-weight: 800; letter-spacing: 2px; }
 .section-heading h2, .info-intro h2 { font-size: 31px; line-height: 1.1; margin: 8px 0 0; }
 .section-heading > p { font-size: 13px; color: #837389; line-height: 1.5; max-width: 320px; margin-top: 8px; }
+.product-price-block del { color: #928597; font-size: 11px; }
 .filter-row { margin: 26px 0 20px; }
 .search {
   background: #fff; border: 1px solid var(--line); height: 48px; border-radius: 17px;
@@ -162,16 +163,15 @@ main { max-width: 1180px; margin: auto; }
 }
 .search:focus-within { border-color: var(--purple); box-shadow: 0 0 0 3px rgba(123, 94, 167, .1); }
 .search input {
-  border: 0; outline: 0; width: 100%; background: none; color: var(--ink);
+  border: 0; outline: 0; width: 100%; min-width: 0; flex: 1; background: none; color: var(--ink);
   font-size: 16px; /* 16px agar iOS tidak zoom saat fokus */
 }
-.chips { display: flex; gap: 8px; margin-top: 12px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
-.chips::-webkit-scrollbar { display: none; }
-.chips button {
-  flex: 0 0 auto; min-height: 40px; border: 1px solid #e1d5e4; color: #755f7f; background: transparent;
-  padding: 8px 16px; border-radius: 99px; font-size: 12px; font-weight: 700;
+.search-divider { width: 1px; height: 24px; flex: none; background: var(--line); }
+.search select {
+  max-width: 125px; min-height: 40px; flex: none; border: 0; outline: 0; color: var(--purple);
+  background: transparent; font-size: 12px; font-weight: 800;
 }
-.chips button.active { background: var(--purple); color: #fff; border-color: var(--purple); }
+.search select:focus-visible { outline: 2px solid var(--purple); outline-offset: 1px; border-radius: 6px; }
 .menu-status { color: #827487; text-align: center; font-size: 14px; }
 .menu-status:not(:empty) { padding: 40px 20px; }
 .menu-status .btn-retry {
@@ -181,10 +181,23 @@ main { max-width: 1180px; margin: auto; }
 
 .product-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .product-card {
-  min-width: 0; overflow: hidden; border: 1px solid #eee2eb; border-radius: 21px;
+  min-width: 0; position: relative; overflow: hidden; border: 1px solid #eee2eb; border-radius: 21px;
   background: rgba(255, 255, 255, .75); transition: transform .2s, box-shadow .2s;
 }
 .product-card:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(75, 46, 86, .08); }
+.product-detail-trigger {
+  display: block; width: 100%; padding: 0; border: 0; background: transparent;
+  color: inherit; text-align: left;
+}
+.favorite-toggle {
+  position: absolute; z-index: 3; top: 9px; right: 9px; width: 44px; height: 44px;
+  display: grid; place-items: center; padding: 0; border: 1px solid rgba(255,255,255,.85);
+  border-radius: 50%; background: rgba(255,255,255,.92); color: var(--rose);
+  box-shadow: 0 3px 10px rgba(59,42,77,.12);
+}
+.favorite-toggle.active { background: #ffe4ed; color: var(--rose); border-color: #ffd2e1; }
+.favorite-toggle.active .icon { fill: currentColor; }
+.favorite-toggle:hover { transform: scale(1.06); }
 .product-image { aspect-ratio: 4/3; position: relative; display: grid; place-items: center; overflow: hidden; }
 .product-image::after {
   content: ""; position: absolute; width: 90px; height: 24px; border-radius: 50%;
@@ -204,10 +217,13 @@ main { max-width: 1180px; margin: auto; }
 .sold-out .product-image { filter: grayscale(.45); }
 .sold-out .food-emoji { opacity: .55; }
 .product-body { padding: 12px 11px 13px; }
+.product-controls { padding-top: 0; }
 .product-body h3 { font-family: var(--serif); font-size: 15px; line-height: 1.15; margin: 0 0 5px; }
 .product-body > p { color: #7a6c80; font-size: 11px; line-height: 1.35; height: 30px; margin: 0 0 13px; overflow: hidden; }
 .product-bottom { display: flex; flex-direction: column; align-items: flex-start; gap: 9px; }
 .product-bottom strong { font-size: 13px; color: var(--rose); white-space: nowrap; }
+.product-price-block { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; min-width: 0; }
+.product-price-block del { font-size: 10px; }
 .card-ctl { width: 100%; }
 .add-btn {
   display: flex; align-items: center; gap: 3px; justify-content: center; border: 1px solid #cdbadd;
@@ -228,6 +244,21 @@ main { max-width: 1180px; margin: auto; }
   min-height: 40px; width: 100%; border: 0; background: #eee9ed; color: #9a8e9c;
   border-radius: 11px; font-size: 11px; font-weight: 800; cursor: not-allowed;
 }
+.product-detail-image {
+  aspect-ratio: 4/3; max-height: 320px; position: relative; display: grid; place-items: center;
+  overflow: hidden; border-radius: 20px;
+}
+.product-detail-image .food-emoji { font-size: clamp(90px, 30vw, 150px); }
+.product-detail-image img { width: 100%; height: 100%; object-fit: cover; }
+.product-detail-info { padding-top: 18px; }
+.product-detail-price { display: block; color: var(--rose); font-family: var(--serif); font-size: 24px; }
+.detail-price-block del { font-size: 12px; }
+.product-detail-description { margin-top: 7px; color: #6f6078; font-size: 14px; line-height: 1.6; }
+.product-detail-note {
+  margin-top: 12px; padding: 10px 12px; border-radius: 12px; background: #f3ecfb;
+  color: var(--purple); font-size: 12px; font-weight: 700;
+}
+.detail-ctl { margin-top: 18px; }
 
 /* ---------- Info toko ---------- */
 .store-info { padding: 50px 16px 40px; background: #fff; border-radius: 34px; margin: 0 12px; }
@@ -263,7 +294,7 @@ main { max-width: 1180px; margin: auto; }
 
 /* ---------- Bar keranjang ---------- */
 .cart-bar {
-  position: fixed; z-index: 35; bottom: calc(16px + env(safe-area-inset-bottom)); left: 12px; right: 12px;
+  position: fixed; z-index: 37; bottom: calc(78px + env(safe-area-inset-bottom)); left: 12px; right: 12px;
   max-width: 520px; margin: auto; height: 66px; border: 0; border-radius: 20px;
   background: var(--ink); color: #fff; box-shadow: 0 13px 35px rgba(59, 42, 77, .3);
   display: flex; align-items: center; padding: 10px 13px; text-align: left;
@@ -280,6 +311,23 @@ main { max-width: 1180px; margin: auto; }
 .cart-bar b { font-size: 12px; }
 .cart-bar small { color: #d9cfe1; font-size: 12px; margin-top: 2px; }
 .cart-bar > strong { margin-left: auto; display: flex; align-items: center; gap: 6px; font-size: 12px; }
+
+/* ---------- Navigasi bawah ---------- */
+.bottom-nav {
+  position: fixed; z-index: 36; right: 0; bottom: 0; left: 0;
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px;
+  padding: 7px 10px calc(7px + env(safe-area-inset-bottom));
+  border-top: 1px solid rgba(123, 94, 167, .14);
+  background: rgba(255, 253, 251, .96);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+}
+.bottom-nav-item {
+  position: relative; min-width: 0; min-height: 52px; border: 0; border-radius: 14px; background: transparent;
+  color: #837389; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 2px; font-size: 10px; font-weight: 800;
+}
+.bottom-nav-item.active { color: var(--purple); background: #f3ecfb; }
+.bottom-nav-item .icon { stroke-width: 2; }
 
 /* ---------- Sheet ---------- */
 .overlay {
@@ -325,6 +373,7 @@ main { max-width: 1180px; margin: auto; }
 .cart-item-title > div { min-width: 0; }
 .cart-item-title h3 { font-family: var(--serif); font-size: 14px; margin: 2px 0 4px; }
 .cart-item-title b { color: var(--rose); font-size: 12px; }
+.cart-original-price { display: block; color: #928597; font-size: 10px; }
 .cart-item .stepper { width: 104px; flex: 0 0 104px; }
 .item-note {
   border: 0; background: var(--cream); border-radius: 9px; width: 100%; padding: 8px 10px;
@@ -358,6 +407,8 @@ main { max-width: 1180px; margin: auto; }
 .order-summary > div:first-child span { color: #7e6f85; }
 .order-summary p { display: flex; justify-content: space-between; gap: 10px; font-size: 11px; color: #6a5b72; margin: 5px 0; }
 .order-summary p b { font-weight: 600; white-space: nowrap; }
+.summary-price { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+.summary-price del { color: #928597; font-size: 10px; }
 .summary-total {
   border-top: 1px dashed #dfd2dd; margin-top: 10px; padding-top: 10px;
   display: flex; justify-content: space-between; font-size: 13px;
@@ -457,16 +508,58 @@ main { max-width: 1180px; margin: auto; }
   background: var(--lilac); color: var(--purple); font-weight: 800; font-size: 12px;
 }
 .history-note { color: #85778a; font-size: 11px; text-align: center; margin-top: 12px; }
+.profile-form { display: grid; gap: 15px; }
+.profile-note { color: #786981; font-size: 13px; line-height: 1.55; }
+.profile-status { color: #6f5a80; font-size: 12px; min-height: 18px; }
+.profile-history {
+  min-height: 44px; border: 1px solid #ded3df; border-radius: 13px; background: #fff;
+  color: var(--purple); font-size: 12px; font-weight: 800;
+}
+.profile-page-form {
+  width: min(100%, 560px); margin: 28px auto 0; padding: 22px;
+  border: 1px solid #eee2eb; border-radius: 22px; background: #fff;
+  box-shadow: 0 12px 30px rgba(75, 46, 86, .06);
+}
+.avatar-picker { min-width: 0; margin: 0; padding: 0; border: 0; }
+.avatar-picker legend { padding: 0; margin-bottom: 12px; font-size: 13px; font-weight: 800; }
+.avatar-preview-row { display: flex; align-items: center; gap: 16px; }
+.avatar-preview {
+  width: 104px; height: 104px; flex: 0 0 104px; overflow: hidden;
+  display: grid; place-items: center; border: 4px solid #fff; border-radius: 50%;
+  background: var(--lilac); box-shadow: 0 0 0 1px var(--line);
+}
+.avatar-preview > img, .avatar-preview > svg { width: 100%; height: 100%; object-fit: cover; }
+.avatar-upload { display: grid; justify-items: start; gap: 7px; }
+.photo-upload-button {
+  min-height: 42px; display: inline-flex; align-items: center; gap: 7px; padding: 0 13px;
+  border: 1px solid #d9c8ea; border-radius: 12px; background: #fff; color: var(--purple);
+  font-size: 12px; font-weight: 800; cursor: pointer;
+}
+.photo-upload-button:hover { background: #f7f1fb; }
+.avatar-upload small { color: #837389; font-size: 11px; line-height: 1.4; }
+.avatar-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; margin-top: 16px; }
+.avatar-option { position: relative; min-width: 0; cursor: pointer; }
+.avatar-option input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.avatar-option-content {
+  min-height: 98px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 3px; border: 1px solid #eadfeb; border-radius: 15px; background: #fff;
+  color: #6f6078; font-size: 11px; font-weight: 800; transition: background .15s, border-color .15s;
+}
+.avatar-option input:checked + .avatar-option-content { border-color: var(--purple); background: #f5effa; color: var(--purple); }
+.avatar-option input:focus-visible + .avatar-option-content { outline: 3px solid var(--purple); outline-offset: 2px; }
+.cat-art { width: 66px; height: 66px; }
+.favorite-empty { grid-column: 1 / -1; }
+.favorite-empty .icon { color: var(--purple); }
 
 /* ---------- Toast & petunjuk iOS ---------- */
 .toast {
-  position: fixed; z-index: 100; left: 50%; bottom: calc(90px + env(safe-area-inset-bottom)); transform: translateX(-50%);
+  position: fixed; z-index: 100; left: 50%; bottom: calc(150px + env(safe-area-inset-bottom)); transform: translateX(-50%);
   display: flex; align-items: center; gap: 6px; background: var(--ink); color: #fff;
   padding: 10px 14px; border-radius: 11px; font-size: 12px; box-shadow: 0 8px 25px #33233c44;
   max-width: min(90vw, 420px); text-align: center;
 }
 .ios-hint {
-  position: fixed; z-index: 90; left: 12px; right: 12px; bottom: calc(92px + env(safe-area-inset-bottom));
+  position: fixed; z-index: 90; left: 12px; right: 12px; bottom: calc(150px + env(safe-area-inset-bottom));
   max-width: 480px; margin-inline: auto; padding: 12px 14px; border-radius: 16px;
   background: #fff; border: 1px solid #d9c8ea; box-shadow: 0 9px 25px rgba(59, 42, 77, .14);
   display: flex; align-items: center; gap: 10px; font-size: 13px;
@@ -481,12 +574,10 @@ main { max-width: 1180px; margin: auto; }
   .hero-art { width: 42%; height: 100%; bottom: 0; right: 2%; }
   .cake { font-size: 170px; right: 8%; }
   .cake-plate { width: 235px; height: 50px; right: 0; bottom: 68px; }
-  .pickup-pill { left: 0; bottom: 105px; }
   .menu-section { padding: 80px 32px; }
   .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; }
   .filter-row { display: flex; align-items: center; gap: 15px; }
-  .search { width: 310px; flex: 0 0 310px; }
-  .chips { margin: 0; }
+  .search { width: 100%; max-width: 600px; }
   .product-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
   .product-bottom { flex-direction: row; justify-content: space-between; align-items: center; }
   .card-ctl { width: 104px; flex: none; }

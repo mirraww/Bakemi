@@ -1,7 +1,7 @@
 {
   "toko": {
-    "nama": "Manis Manja Bakery",
-    "merek": "Manis Manja",
+    "nama": "BakeMiii",
+    "merek": "BakeMiii",
     "jenis": "BAKERY",
     "wa": "6285703285896",
     "alamat": "Jl. Kemang Raya No. 18, Jakarta Selatan",
@@ -10,9 +10,9 @@
     "jamLabel": "Setiap hari, 08:00–20:00 WIB",
     "siapMenit": 60,
     "pembayaran": {
-      "qris": { "gambar": "images/qris.png", "atasNama": "MANIS MANJA BAKERY" },
+      "qris": { "gambar": "images/qris.png", "atasNama": "BAKEMIII" },
       "bank": [
-        { "bank": "BCA", "noRek": "1234567890", "atasNama": "Manis Manja Bakery" }
+        { "bank": "BCA", "noRek": "1234567890", "atasNama": "BakeMiii" }
       ]
     }
   },
@@ -58,5 +58,8 @@
       "deskripsi": "Teh beri segar, manisnya pas",
       "foto": "", "emoji": "🫐", "warna": "#E7DDF8", "tersedia": true, "preOrder": false, "label": "Baru"
     }
-  ]
+  ],
+  "promoMingguan": {
+    "diskonProduk": { "id": "p007", "hargaPromo": 15000 }
+  }
 }

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Manis Manja Bakery</title>
+  <title>BakeMiii</title>
   <meta name="description" content="Pesan roti dan kue segar untuk diambil di toko.">
   <meta name="theme-color" content="#FFF8F0">
   <link rel="manifest" href="manifest.json">
@@ -11,7 +11,7 @@
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="Manis Manja">
+  <meta name="apple-mobile-web-app-title" content="BakeMiii">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,6 +25,10 @@
   <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
   <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 13H6L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></symbol>
   <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3Z"/><path d="M9 8h6M9 12h6"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1V10Z"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4m0 0 5 5m-5-5L7 9"/><path d="M5 14v5h14v-5"/></symbol>
   <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
   <symbol id="i-minus" viewBox="0 0 24 24"><path d="M6 12h12"/></symbol>
   <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 6v12M6 12h12"/></symbol>
@@ -43,22 +47,18 @@
 </div>
 
 <div class="app-shell">
-  <header>
+  <header id="top">
     <div class="header-inner">
       <button class="brand" id="brandBtn" type="button" aria-label="Kembali ke atas">
         <span class="logo" aria-hidden="true">🧁</span>
-        <span><b id="brandName">Manis Manja</b><small id="brandSub">BAKERY</small></span>
+        <span><b id="brandName">BakeMiii</b><small id="brandSub">BAKERY</small></span>
       </button>
-      <nav aria-label="Menu utama">
+      <nav aria-label="Aksi cepat">
         <button class="install-btn" id="btnInstall" type="button" aria-label="Install aplikasi">
           <svg class="icon" width="17" height="17" aria-hidden="true"><use href="#i-download"/></svg>
           <span>Install</span>
         </button>
-        <button class="nav-action" type="button" data-open="orders" aria-label="Pesanan saya">
-          <svg class="icon" width="22" height="22" aria-hidden="true"><use href="#i-receipt"/></svg>
-          <span>Pesanan Saya</span>
-        </button>
-        <button class="nav-action cart-icon" type="button" data-open="cart" aria-label="Buka keranjang">
+        <button class="nav-action cart-icon" type="button" data-page="cart" aria-label="Keranjang">
           <svg class="icon" width="22" height="22" aria-hidden="true"><use href="#i-bag"/></svg>
           <span class="desktop-only">Keranjang</span>
           <em id="cartBadge" hidden>0</em>
@@ -70,22 +70,25 @@
   <main>
     <noscript><p style="padding:24px">Situs ini membutuhkan JavaScript agar menu bisa tampil.</p></noscript>
 
+    <div class="page-view" id="view-home">
     <section class="hero" aria-labelledby="heroTitle">
       <div class="hero-copy">
+        <p class="welcome-greeting" id="welcomeGreeting" aria-live="polite"></p>
         <div class="open-pill" id="statusPill" role="status"><i></i><span id="statusText">Memuat…</span></div>
         <h1 id="heroTitle">Roti &amp; kue segar,<br><em>dipanggang setiap hari</em></h1>
         <p>Dibuat dengan bahan pilihan dan penuh kasih, siap menemani momen manismu.</p>
-        <a href="#menu" class="primary-link">Pilih menu
-          <svg class="icon" width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <div class="hero-actions">
+          <a href="#menu" class="primary-link">Pilih menu
+            <svg class="icon" width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <div class="pickup-note">
+            <svg class="icon" width="19" height="19" aria-hidden="true"><use href="#i-map"/></svg>
+            <span><small>Khusus</small><b>Ambil di toko</b></span>
+          </div>
+        </div>
       </div>
       <div class="hero-art" aria-hidden="true">
         <span class="spark s1">✦</span>
-        <span class="spark s2">✦</span>
         <div class="cake-plate"><div class="cake">🍰</div></div>
-        <div class="pickup-pill">
-          <svg class="icon" width="18" height="18"><use href="#i-map"/></svg>
-          <span><small>Khusus</small><b>Ambil di toko</b></span>
-        </div>
       </div>
     </section>
 
@@ -98,12 +101,14 @@
         <p>Semua dibuat fresh setiap pagi dalam jumlah terbatas.</p>
       </div>
       <div class="filter-row">
-        <label class="search">
-          <span class="visually-hidden">Cari menu</span>
+        <div class="search">
           <svg class="icon" width="20" height="20" aria-hidden="true"><use href="#i-search"/></svg>
-          <input id="search" type="search" placeholder="Cari roti atau kue..." autocomplete="off" enterkeyhint="search">
-        </label>
-        <div class="chips" id="chips" role="group" aria-label="Kategori"></div>
+          <input id="search" type="search" aria-label="Cari menu" placeholder="Cari roti atau kue..." autocomplete="off" enterkeyhint="search">
+          <span class="search-divider" aria-hidden="true"></span>
+          <select id="category" aria-label="Filter kategori">
+            <option value="Semua">Semua</option>
+          </select>
+        </div>
       </div>
       <p class="menu-status" id="menuStatus" role="status" aria-live="polite">Memuat menu…</p>
       <div class="product-grid" id="grid" aria-label="Daftar menu"></div>
@@ -128,7 +133,7 @@
         </div>
         <div class="store-details">
           <span class="eyebrow">TOKO KAMI</span>
-          <h3 id="storeName">Manis Manja Bakery</h3>
+          <h3 id="storeName">BakeMiii</h3>
           <p><svg class="icon" width="19" height="19" aria-hidden="true"><use href="#i-map"/></svg>
             <span id="storeAddr"></span></p>
           <p><svg class="icon" width="19" height="19" aria-hidden="true"><use href="#i-clock"/></svg>
@@ -137,10 +142,136 @@
         </div>
       </div>
     </section>
+    </div>
+
+    <section class="page-view page-section" id="view-favorites" aria-labelledby="favoritesTitle" hidden>
+      <div class="section-heading">
+        <div><span class="eyebrow">KOLEKSI PILIHANMU</span><h2 id="favoritesTitle">Menu Favorit</h2></div>
+        <p>Simpan menu yang kamu suka agar mudah ditemukan lagi.</p>
+      </div>
+      <p class="menu-status" id="favoritesStatus" role="status" aria-live="polite"></p>
+      <div class="product-grid" id="favoritesGrid" aria-label="Menu favorit"></div>
+    </section>
+
+    <section class="page-view page-section" id="view-cart" aria-labelledby="cartPageTitle" hidden>
+      <div class="section-heading">
+        <div><span class="eyebrow">PESANANMU</span><h2 id="cartPageTitle">Keranjang</h2></div>
+        <p>Periksa pilihan menu dan jumlah pesananmu sebelum checkout.</p>
+      </div>
+      <div id="cartPageContent"></div>
+    </section>
+
+    <section class="page-view page-section" id="view-orders" aria-labelledby="ordersTitle" hidden>
+      <div class="section-heading">
+        <div><span class="eyebrow">PESANANMU</span><h2 id="ordersTitle">Riwayat Belanja</h2></div>
+        <p>Pesanan yang tersimpan di perangkat ini.</p>
+      </div>
+      <div id="ordersPageContent"></div>
+    </section>
+
+    <section class="page-view page-section" id="view-profile" aria-labelledby="profileTitle" hidden>
+      <div class="section-heading">
+        <div><span class="eyebrow">AKUN DI PERANGKAT INI</span><h2 id="profileTitle">Profil kamu</h2></div>
+        <p>Data profil membantu mempercepat checkout.</p>
+      </div>
+      <form class="profile-form profile-page-form" id="profileForm" novalidate>
+        <fieldset class="avatar-picker">
+          <legend>Foto profil</legend>
+          <div class="avatar-preview-row">
+            <div class="avatar-preview" id="profileAvatarPreview" role="img" aria-label="Avatar profil"></div>
+            <div class="avatar-upload">
+              <label class="photo-upload-button" for="profilePhotoInput">
+                <svg class="icon" width="18" height="18" aria-hidden="true"><use href="#i-upload"/></svg>
+                Unggah foto
+              </label>
+              <input class="visually-hidden" id="profilePhotoInput" type="file" accept="image/jpeg,image/png,image/webp">
+              <small id="profilePhotoStatus" role="status">Atau pilih ilustrasi kucing di bawah.</small>
+            </div>
+          </div>
+          <div class="avatar-options" role="radiogroup" aria-label="Pilih ilustrasi kucing">
+            <label class="avatar-option">
+              <input type="radio" name="avatar" value="cat-cream">
+              <span class="avatar-option-content">
+                <svg class="cat-art" viewBox="0 0 80 80" aria-hidden="true">
+                  <circle cx="40" cy="40" r="38" fill="#FFF2DE"/>
+                  <path d="m21 33-3-16 15 9q7-3 14 0l15-9-3 17q5 7 5 16c0 14-10 22-24 22S16 63 16 49q0-9 5-16Z" fill="#D8A86F"/>
+                  <path d="m23 29-1-7 8 5m27 2 1-7-8 5" fill="#F4C8BD"/>
+                  <ellipse cx="32" cy="43" rx="2" ry="3" fill="#3B2A4D"/><ellipse cx="48" cy="43" rx="2" ry="3" fill="#3B2A4D"/>
+                  <path d="m37 49 3-2 3 2-3 3-3-3Zm3 3v3m0 0-3 2m3-2 3 2" fill="none" stroke="#3B2A4D" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                  <path d="m29 51-9-2m9 5-9 1m31-4 9-2m-9 5 9 1" fill="none" stroke="#FFF8F0" stroke-linecap="round" stroke-width="1.5"/>
+                </svg>
+                <span>Vanila</span>
+              </span>
+            </label>
+            <label class="avatar-option">
+              <input type="radio" name="avatar" value="cat-lilac">
+              <span class="avatar-option-content">
+                <svg class="cat-art" viewBox="0 0 80 80" aria-hidden="true">
+                  <circle cx="40" cy="40" r="38" fill="#F0E7FA"/>
+                  <path d="m21 33-3-16 15 9q7-3 14 0l15-9-3 17q5 7 5 16c0 14-10 22-24 22S16 63 16 49q0-9 5-16Z" fill="#AA91C8"/>
+                  <path d="m23 29-1-7 8 5m27 2 1-7-8 5" fill="#F6D6E4"/>
+                  <ellipse cx="32" cy="43" rx="2" ry="3" fill="#3B2A4D"/><ellipse cx="48" cy="43" rx="2" ry="3" fill="#3B2A4D"/>
+                  <path d="m37 49 3-2 3 2-3 3-3-3Zm3 3v3m0 0-3 2m3-2 3 2" fill="none" stroke="#3B2A4D" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                  <path d="m29 51-9-2m9 5-9 1m31-4 9-2m-9 5 9 1" fill="none" stroke="#FFF8F0" stroke-linecap="round" stroke-width="1.5"/>
+                </svg>
+                <span>Ungu</span>
+              </span>
+            </label>
+            <label class="avatar-option">
+              <input type="radio" name="avatar" value="cat-pink">
+              <span class="avatar-option-content">
+                <svg class="cat-art" viewBox="0 0 80 80" aria-hidden="true">
+                  <circle cx="40" cy="40" r="38" fill="#FFEAF0"/>
+                  <path d="m21 33-3-16 15 9q7-3 14 0l15-9-3 17q5 7 5 16c0 14-10 22-24 22S16 63 16 49q0-9 5-16Z" fill="#D88EA8"/>
+                  <path d="m23 29-1-7 8 5m27 2 1-7-8 5" fill="#F8C7D5"/>
+                  <ellipse cx="32" cy="43" rx="2" ry="3" fill="#3B2A4D"/><ellipse cx="48" cy="43" rx="2" ry="3" fill="#3B2A4D"/>
+                  <path d="m37 49 3-2 3 2-3 3-3-3Zm3 3v3m0 0-3 2m3-2 3 2" fill="none" stroke="#3B2A4D" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                  <path d="m29 51-9-2m9 5-9 1m31-4 9-2m-9 5 9 1" fill="none" stroke="#FFF8F0" stroke-linecap="round" stroke-width="1.5"/>
+                </svg>
+                <span>Stroberi</span>
+              </span>
+            </label>
+          </div>
+        </fieldset>
+        <p class="profile-note">Simpan nama dan nomor WhatsApp. Data hanya tersimpan di perangkat ini.</p>
+        <label class="field">
+          <span>Nama lengkap</span>
+          <input name="nama" type="text" autocomplete="name" maxlength="60" placeholder="Contoh: Ayu Lestari" aria-describedby="profileErrNama">
+          <small id="profileErrNama" role="alert"></small>
+        </label>
+        <label class="field">
+          <span>No. HP / WhatsApp</span>
+          <input name="hp" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" placeholder="08xx xxxx xxxx" aria-describedby="profileErrHp">
+          <small id="profileErrHp" role="alert"></small>
+        </label>
+        <p class="profile-status" id="profileStatus" role="status" aria-live="polite"></p>
+        <button class="primary-btn full" type="submit">Simpan profil</button>
+        <button class="profile-history" type="button" data-page="orders">Lihat riwayat belanja</button>
+      </form>
+    </section>
   </main>
 
+  <nav class="bottom-nav" aria-label="Navigasi bawah">
+    <button class="bottom-nav-item active" type="button" data-tab="home" data-page="home" aria-current="page">
+      <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-home"/></svg>
+      <span>Beranda</span>
+    </button>
+    <button class="bottom-nav-item" type="button" data-tab="favorites" data-page="favorites">
+      <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-heart"/></svg>
+      <span>Favorit</span>
+    </button>
+    <button class="bottom-nav-item" type="button" data-tab="orders" data-page="orders">
+      <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-receipt"/></svg>
+      <span>Riwayat</span>
+    </button>
+    <button class="bottom-nav-item" type="button" data-tab="profile" data-page="profile">
+      <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-user"/></svg>
+      <span>Profil</span>
+    </button>
+  </nav>
+
   <!-- Bar keranjang -->
-  <button class="cart-bar" id="cartBar" type="button" data-open="cart" hidden>
+  <button class="cart-bar" id="cartBar" type="button" data-page="cart" hidden>
     <span class="bar-bag">
       <svg class="icon" width="22" height="22" aria-hidden="true"><use href="#i-bag"/></svg>
       <i id="barBadge">0</i>
@@ -153,23 +284,14 @@
   <!-- Overlay + bottom sheet -->
   <div class="overlay" id="overlay" hidden>
 
-    <section class="sheet" id="sheet-cart" role="dialog" aria-modal="true" aria-labelledby="t-cart" tabindex="-1" hidden>
-      <div class="sheet-handle"></div>
-      <div class="sheet-header">
-        <div><span class="eyebrow" data-brand>MANIS MANJA BAKERY</span><h2 id="t-cart">Keranjang kamu</h2></div>
-        <button class="close" type="button" data-close aria-label="Tutup"><svg class="icon" width="22" height="22" aria-hidden="true"><use href="#i-close"/></svg></button>
-      </div>
-      <div class="sheet-content" id="cartContent"></div>
-    </section>
-
     <section class="sheet" id="sheet-checkout" role="dialog" aria-modal="true" aria-labelledby="t-checkout" tabindex="-1" hidden>
       <div class="sheet-handle"></div>
       <div class="sheet-header">
-        <div><span class="eyebrow" data-brand>MANIS MANJA BAKERY</span><h2 id="t-checkout">Detail pengambilan</h2></div>
+        <div><span class="eyebrow" data-brand>BakeMiii</span><h2 id="t-checkout">Detail pengambilan</h2></div>
         <button class="close" type="button" data-close aria-label="Tutup"><svg class="icon" width="22" height="22" aria-hidden="true"><use href="#i-close"/></svg></button>
       </div>
       <form class="sheet-content" id="checkoutForm" novalidate>
-        <button class="back-link" type="button" data-open="cart">← Kembali ke keranjang</button>
+        <button class="back-link" type="button" data-page="cart">← Kembali ke keranjang</button>
         <div class="order-summary" id="coSummary"></div>
         <div id="coNotice"></div>
         <div class="form-grid">
@@ -194,7 +316,7 @@
             <textarea name="catatan" maxlength="200" placeholder="Contoh: Tolong siapkan paper bag tambahan"></textarea>
           </label>
         </div>
-        <p class="wa-preview"><b>Pratinjau WhatsApp</b>“Halo <strong>*<span data-store-name>Manis Manja Bakery</span>*</strong>, saya mau pesan 🙏 No. Pesanan, Nama, No. HP, Waktu ambil, daftar item, Total.”</p>
+        <p class="wa-preview"><b>Pratinjau WhatsApp</b>“Halo <strong>*<span data-store-name>BakeMiii</span>*</strong>, saya mau pesan 🙏 No. Pesanan, Nama, No. HP, Waktu ambil, daftar item, Total.”</p>
         <button class="wa-btn" type="submit"><span aria-hidden="true">◉</span> Pesan via WhatsApp</button>
         <small class="safe-note">Pesanan baru diproses setelah dikonfirmasi oleh toko.</small>
       </form>
@@ -209,13 +331,13 @@
       <div class="sheet-content" id="successContent"></div>
     </section>
 
-    <section class="sheet" id="sheet-orders" role="dialog" aria-modal="true" aria-labelledby="t-orders" tabindex="-1" hidden>
+    <section class="sheet" id="sheet-product" role="dialog" aria-modal="true" aria-labelledby="t-product" tabindex="-1" hidden>
       <div class="sheet-handle"></div>
       <div class="sheet-header">
-        <div><span class="eyebrow" data-brand>MANIS MANJA BAKERY</span><h2 id="t-orders">Pesanan Saya</h2></div>
+        <div><span class="eyebrow" id="productCategory"></span><h2 id="t-product">Detail produk</h2></div>
         <button class="close" type="button" data-close aria-label="Tutup"><svg class="icon" width="22" height="22" aria-hidden="true"><use href="#i-close"/></svg></button>
       </div>
-      <div class="sheet-content" id="ordersContent"></div>
+      <div class="sheet-content" id="productContent"></div>
     </section>
 
   </div>
