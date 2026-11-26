@@ -163,7 +163,7 @@ main { max-width: 1180px; margin: auto; }
 .faq-item summary::marker { color: var(--purple); }
 .faq-item p { margin-top: 12px; color: #706477; font-size: 14px; line-height: 1.7; }
 .product-price-block del { color: #928597; font-size: 11px; }
-.filter-row { margin: 26px 0 20px; }
+.filter-row { display: grid; gap: 10px; margin: 26px 0 20px; }
 .search {
   background: #fff; border: 1px solid var(--line); height: 48px; border-radius: 17px;
   display: flex; align-items: center; padding: 0 15px; gap: 9px; color: #9b8ca1;
@@ -178,6 +178,11 @@ main { max-width: 1180px; margin: auto; }
   max-width: 125px; min-height: 40px; flex: none; border: 0; outline: 0; color: var(--purple);
   background: transparent; font-size: 12px; font-weight: 800;
 }
+.price-sort {
+  width: 100%; min-height: 48px; padding: 0 15px; border: 1px solid var(--line); border-radius: 17px;
+  background: #fff; color: var(--purple); font-size: 13px; font-weight: 800;
+}
+.price-sort:focus { outline: 0; border-color: var(--purple); box-shadow: 0 0 0 3px rgba(123, 94, 167, .1); }
 .search select:focus-visible { outline: 2px solid var(--purple); outline-offset: 1px; border-radius: 6px; }
 .menu-status { color: #827487; text-align: center; font-size: 14px; }
 .menu-status:not(:empty) { padding: 40px 20px; }
@@ -584,7 +589,8 @@ main { max-width: 1180px; margin: auto; }
   .menu-section { padding: 80px 32px; }
   .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; }
   .filter-row { display: flex; align-items: center; gap: 15px; }
-  .search { width: 100%; max-width: 600px; }
+  .search { width: 100%; max-width: 600px; flex: 1; }
+  .price-sort { width: 220px; flex: none; }
   .product-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
   .product-bottom { flex-direction: row; justify-content: space-between; align-items: center; }
   .card-ctl { width: 104px; flex: none; }

@@ -98,7 +98,7 @@ let produk = [];
 let byId = new Map();
 const savedFavorites = store(FAVORITES_KEY, []);
 const favoriteIds = new Set(Array.isArray(savedFavorites) ? savedFavorites.filter(id => typeof id === 'string') : []);
-const state = { kategori: 'Semua', q: '' };
+const state = { kategori: 'Semua', q: '', priceSort: '' };
 
 let current = null;      // nama sheet yang sedang terbuka
 let returnFocus = null;
@@ -211,9 +211,15 @@ function renderCategoryOptions() {
 
 function filtered() {
   const q = state.q.trim().toLowerCase();
-  return produk.filter(p =>
+  const list = produk.filter(p =>
     (state.kategori === 'Semua' || p.kategori === state.kategori) &&
     (!q || `${p.nama} ${p.deskripsi || ''}`.toLowerCase().includes(q)));
+  if (state.priceSort) {
+    const direction = state.priceSort === 'asc' ? 1 : -1;
+    list.sort((a, b) =>
+      direction * ((hargaPromo(a) ?? a.harga) - (hargaPromo(b) ?? b.harga)));
+  }
+  return list;
 }
 
 function hargaPromo(p) {
@@ -929,6 +935,10 @@ function bindEvents() {
     state.kategori = e.target.value;
     renderProducts();
   });
+  $('#priceSort').addEventListener('change', e => {
+    state.priceSort = e.target.value;
+    renderProducts();
+  });
   $('#profileForm').addEventListener('submit', saveProfile);
   $('#profileForm').addEventListener('change', e => {
     if (e.target.name === 'avatar') {
@@ -943,6 +953,7 @@ function bindEvents() {
 
   $('#grid').addEventListener('click', handleProductGridClick);
   $('#favoritesGrid').addEventListener('click', handleProductGridClick);
+  $('#productContent').addEventListener('click', handleProductGridClick);
 
   // Isi keranjang
   const cartBox = $('#cartPageContent');
