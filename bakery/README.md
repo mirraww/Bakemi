@@ -3,6 +3,7 @@
 Katalog menu yang bisa di-install seperti aplikasi. Pelanggan memilih menu, mengisi data & jadwal ambil,
 lalu WhatsApp terbuka dengan template pesanan yang sudah terisi. Konfirmasi pembayaran juga lewat WhatsApp.
 Pickup saja, pembayaran QRIS / transfer bank, mendukung pre-order. Tanpa backend.
+Navigasi juga menyediakan halaman Bantuan & FAQ untuk menjawab pertanyaan umum pelanggan.
 
 ## Menjalankan di komputer
 

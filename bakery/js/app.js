@@ -975,7 +975,7 @@ function bindEvents() {
 }
 
 function navigateTo(page) {
-  const pages = ['home', 'favorites', 'cart', 'orders', 'profile'];
+  const pages = ['home', 'favorites', 'cart', 'orders', 'profile', 'help'];
   if (!pages.includes(page)) return;
   pages.forEach(name => { $(`#view-${name}`).hidden = name !== page; });
   $$('.bottom-nav-item').forEach(item => {

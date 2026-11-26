@@ -28,6 +28,7 @@
   <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1V10Z"/></symbol>
   <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></symbol>
   <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9a2.5 2.5 0 1 1 4.2 1.8c-1.1 1-1.8 1.4-1.8 3.2M12 17.5h.01"/></symbol>
   <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4m0 0 5 5m-5-5L7 9"/><path d="M5 14v5h14v-5"/></symbol>
   <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
   <symbol id="i-minus" viewBox="0 0 24 24"><path d="M6 12h12"/></symbol>
@@ -249,6 +250,39 @@
         <button class="profile-history" type="button" data-page="orders">Lihat riwayat belanja</button>
       </form>
     </section>
+
+    <section class="page-view page-section" id="view-help" aria-labelledby="helpTitle" hidden>
+      <div class="section-heading">
+        <div><span class="eyebrow">ADA YANG INGIN DITANYAKAN?</span><h2 id="helpTitle">Bantuan &amp; FAQ</h2></div>
+        <p>Jawaban untuk hal yang sering ditanyakan seputar pemesanan.</p>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Bagaimana cara memesan?</summary>
+          <p>Pilih produk dan masukkan ke keranjang. Lanjutkan ke checkout untuk mengisi nama, nomor WhatsApp, dan waktu pengambilan, lalu tekan <b>Pesan via WhatsApp</b>.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Apakah pesanan langsung terkirim setelah checkout?</summary>
+          <p>Belum. WhatsApp akan terbuka dengan pesan yang sudah disiapkan. Periksa pesananmu, lalu tekan <b>Kirim</b> di WhatsApp agar pesanan diterima toko.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Bagaimana cara pembayaran?</summary>
+          <p>Tunggu konfirmasi ketersediaan dan total dari toko. Setelah itu, bayar melalui QRIS atau transfer yang tersedia, lalu kirim konfirmasi dan bukti pembayaran lewat WhatsApp.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Apakah pesanan bisa diantar?</summary>
+          <p>Saat ini pemesanan hanya untuk diambil langsung di toko pada waktu yang kamu pilih.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Berapa lama waktu untuk pesanan pre-order?</summary>
+          <p>Waktu paling cepat untuk setiap produk pre-order ditampilkan pada detail produknya. Jika memesan beberapa produk pre-order sekaligus, ikuti waktu persiapan yang paling lama.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Di mana saya bisa melihat riwayat pesanan?</summary>
+          <p>Buka menu <b>Riwayat</b>. Riwayat hanya tersimpan di perangkat dan browser yang digunakan untuk memesan, jadi tidak tersinkron ke perangkat lain.</p>
+        </details>
+      </div>
+    </section>
   </main>
 
   <nav class="bottom-nav" aria-label="Navigasi bawah">
@@ -267,6 +301,10 @@
     <button class="bottom-nav-item" type="button" data-tab="profile" data-page="profile">
       <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-user"/></svg>
       <span>Profil</span>
+    </button>
+    <button class="bottom-nav-item" type="button" data-tab="help" data-page="help" aria-label="Bantuan dan FAQ">
+      <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-help"/></svg>
+      <span>Bantuan</span>
     </button>
   </nav>
 
